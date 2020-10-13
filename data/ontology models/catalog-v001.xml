@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1602530818679" name="http://www.spart.group/megre/ontologies/2017/10/Pattern" uri="Pattern.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1602530818679" name="http://www.spart.group/megre/ontologies/2017/11/Java.DesignPattern" uri="Java.DesignPattern.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1602530818679" name="http://www.spart.group/megre/ontologies/2017/6/Java" uri="Java.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1602530818679" name="http://www.spart.group/megre/ontologies/2017/8/Behavior" uri="Behavior.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1602530818679" name="http://www.spart.group/megre/ontologies/2017/8/Java.Behavior" uri="Java.Behavior.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1602530818679" name="http://www.spart.group/megre/ontologies/2018/10/Time" uri="Time.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1602530818679" name="http://www.spart.group/megre/ontologies/2018/4/Java.StaticBehavior" uri="Java.StaticBehavior.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1602530818679" name="http://www.spart.group/megre/ontologies/2018/4/StaticBehavior" uri="StaticBehavior.owl"/>
+    </group>
+</catalog>
