@@ -1,12 +1,13 @@
-<a href="#zh-cn">（中文说明）</a>
+[（中文说明）](#CodeFactExtractor是什么)
 
 What's CodeFactExtractor
 ----------
-CodeFactExtractor is a lightweight framework to extract facts from source code for code search and inference. CodeFactExtractor assists both static and dynamic analysis in several ways:
+[CodeFactExtractor](https://github.com/Megre/CodeFactExtractor) is a lightweight framework to extract facts from source code for code search and inference. [CodeFactExtractor](https://github.com/Megre/CodeFactExtractor) assists both static and dynamic analysis in several ways:
 
+- assisting normal static analysis tasks, e.g. control flow analysis, data flow analysis and call graph analysis.
 - searching code elements based on self-defined rules or mechanisms of a programming language.
 - inferring relationships of code elements, e.g. implementation, inheritance, override, and overload.
-- identifying design patterns, e.g. the 23 classic GoF (Gang of Four) design patterns.
+- identifying design patterns, e.g. the 23 classic GoF (Gang of Four) design patterns and emerging ones.
 - detecting smells, anti-patterns, and defects, e.g. smells such as Parallel Inheritance Hierarchies, Message Chains, Middle Man, and Data Class, and anti-patterns such as Call Super, Circular Dependency, Constant Interface, Circle-Ellipse Problem, and Object Orgy.
 - encapsulating temporal information to infer runtime behaviors, e.g. the invocation sequence of methods and the transmission of data (e.g. through assignment such as field modification).
 
@@ -33,11 +34,11 @@ Lily, Johnson, and Tom are all individuals whose type (*rdf:type*) is Person.
 
 The properties *`exam:father`*, *`rdf:type`*, *`exam:age`*, and *`exam:brother`* links individuals to other individuals or literal. While *`exam:father`*, *`exam:brother`*, and *`rdf:type`* are all object properties, *`exam:age`* is a data  type property.
 
-The prefix "rdf" is a XML namespace. It is defined as <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>, where the property *`rdf:type`* is defined.
+The prefix "rdf" is a XML namespace defined as "<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>", where the property *`rdf:type`* is defined.
 
-We also define another XML namespace "exam" as "http://www.spart.group/exam#", where the ontology class *`exam:Person`*, and the properties *`exam:father`*, *`exam:age`*, and *`exam:brother`* are defined.
+Another user-defined namespace "exam" is defined as "http://www.spart.group/exam#", where the ontology class *`exam:Person`*, and the properties *`exam:father`*, *`exam:age`*, and *`exam:brother`* are defined.
 
-We can save the facts in `Example 1` in the following "<a href="readme/exam.owl">exam.owl</a>" file in RDF/XML format:
+The facts in `Example 1` can be saved in RDF/XML format in the following "<a href="readme/exam.owl">exam.owl</a>" file:
 
     <?xml version="1.0"?>
     <rdf:RDF xmlns="http://www.spart.group/exam#"
@@ -75,30 +76,31 @@ We can save the facts in `Example 1` in the following "<a href="readme/exam.owl"
         
     </rdf:RDF>
 
+To model the the concepts (e.g. ontology classes) and relations (e.g. properties) as shown in "exam.owl", the [Protege](https://protege.stanford.edu) tool is recommended instead of creating "exam.owl" by editing the text. Based on the OWL model, [CodeFactExtractor](https://github.com/Megre/CodeFactExtractor) assists the extraction of facts from source code. 
 
 ### Inference
 
-Base on the facts in `Example 1`, we can infer the following facts:
+Base on the facts in `Example 1`, the following facts can be inferred:
 
 > (exam:Tom exam:father exam:Johnson), (exam:Tom exam:sister exam:Lily)
 
-We represent the inference as:
+The inference can be represented as:
 
 > (exam:Tom exam:father exam:Johnson), (exam:Tom exam:sister exam:Lily) <- (exam:Lily *exam:father* exam:Johnson), (exam:Lily *exam:brother* exam:Tom)
 
 
 ### SPARQL Query/Update Language
 
-...
+(to be continued)
 
 
 
 Visitor Layout Configuration
 ----------
 
-...
+(to be continued)
 
 ----------
 
-<label id="zh-cn">CodeFactExtractor是什么</label>
+CodeFactExtractor是什么
 ----------
