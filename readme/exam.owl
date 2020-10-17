@@ -22,9 +22,9 @@
     
 
 
-    <!-- http://www.spart.group/exam#brotherIs -->
+    <!-- http://www.spart.group/exam#anElderIs -->
 
-    <owl:ObjectProperty rdf:about="http://www.spart.group/exam#brotherIs"/>
+    <owl:ObjectProperty rdf:about="http://www.spart.group/exam#anElderIs"/>
     
 
 
@@ -34,9 +34,15 @@
     
 
 
-    <!-- http://www.spart.group/exam#sisterIs -->
+    <!-- http://www.spart.group/exam#hasBrother -->
 
-    <owl:ObjectProperty rdf:about="http://www.spart.group/exam#sisterIs"/>
+    <owl:ObjectProperty rdf:about="http://www.spart.group/exam#hasBrother"/>
+    
+
+
+    <!-- http://www.spart.group/exam#hasSister -->
+
+    <owl:ObjectProperty rdf:about="http://www.spart.group/exam#hasSister"/>
     
 
 
@@ -85,10 +91,19 @@
     
 
 
+    <!-- http://www.spart.group/exam#George -->
+
+    <owl:NamedIndividual rdf:about="http://www.spart.group/exam#George">
+        <rdf:type rdf:resource="http://www.spart.group/exam#Person"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.spart.group/exam#Johnson -->
 
     <owl:NamedIndividual rdf:about="http://www.spart.group/exam#Johnson">
         <rdf:type rdf:resource="http://www.spart.group/exam#Person"/>
+        <fatherIs rdf:resource="http://www.spart.group/exam#George"/>
     </owl:NamedIndividual>
     
 
@@ -97,8 +112,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.spart.group/exam#Lily">
         <rdf:type rdf:resource="http://www.spart.group/exam#Person"/>
-        <brotherIs rdf:resource="http://www.spart.group/exam#Tom"/>
         <fatherIs rdf:resource="http://www.spart.group/exam#Johnson"/>
+        <hasBrother rdf:resource="http://www.spart.group/exam#Tom"/>
         <ageIs rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</ageIs>
     </owl:NamedIndividual>
     
@@ -108,6 +123,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.spart.group/exam#Tom">
         <rdf:type rdf:resource="http://www.spart.group/exam#Person"/>
+        <ageIs rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</ageIs>
     </owl:NamedIndividual>
 </rdf:RDF>
 
