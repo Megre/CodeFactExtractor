@@ -113,7 +113,7 @@ An important inference strategy is reusing exiting relations to build more abstr
     
 the following facts can be inferred:
     
-    (exam:Lily exam:anElerIs exam:Tom)
+    (exam:Lily exam:anElderIs exam:Tom)
     (exam:Tom exam:anElderIs exam:Johnson)
     (exam:Tom exam:anElderIs exam:George)
     ...
@@ -128,13 +128,49 @@ Such inference strategy is called `generalization` which raises the abstraction 
 
 ### SPARQL Query/Update Language
 
-(to be continued)
+[RDF (Resource Description Framework)](https://www.w3.org/RDF/) is a standard model for data interchange on the Web. The linking structure of RDF uses [URIs (Universal Resource Identifiers)](https://www.w3.org/wiki/URI) to name things and relations as in a triple, e.g. (exam:Tom *`exam:fatherIs`* exam:Johnson). 
 
+This linking structure forms a directed, labeled graph, where the edges represent the named link  (property) between two resources (represented by the graph nodes). This graph view is the easiest possible mental model for RDF and is often used in easy-to-understand visual explanations.
 
+[SPARQL (Simple Protocol and RDF Query Language)](https://www.w3.org/TR/sparql11-query/) is a query language for RDF. SPARQL contains capabilities for querying required and optional graph patterns along with their conjunctions and disjunctions. SPARQL also supports aggregation, subqueries, negation, creating values by expressions, extensible value testing, and constraining queries by source RDF graph. 
 
-Visitor Layout Configuration
+##### Example 2
+
+    prefix exam: <http://www.spart.group/exam#>
+    
+    select ?x 
+    where {
+        ?x exam:fatherIs exam:Johnson
+    }
+
+This query retrieves the children whose father is Johnson. The query results are bound the variable `x` prefixed with a question mark(`?`).
+
+##### Example 3
+
+    prefix exam: <http://www.spart.group/exam#>
+    
+    insert {
+        ?x exam:anElderIs ?y
+    } 
+    where {
+        { ?x exam:fatherIs+ ?y }
+        union
+        { ?x exam:hasBrother ?y.  ?x exam:ageIs ?ageX. ?y exam:ageIs ?ageY.
+          filter(?ageX < ?ageY)
+        }
+        # other situations
+        # ...
+    }
+
+This update infers *`exam:anElderIs`* from child-father relation and sister-brother relation and insert new facts to RDF graph. There are also other situations from which *`exam:anElderIs`* can be inferred.
+
+Fact Extraction
 ----------
 
+### The Visitor Design Pattern
+
+
+### Visitor Layout Configuration
 (to be continued)
 
 ----------
