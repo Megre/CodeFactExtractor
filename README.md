@@ -164,6 +164,21 @@ This query retrieves the children whose father is Johnson. The query results are
 
 This update infers *`exam:anElderIs`* from child-father relation and sister-brother relation and insert new facts to RDF graph. There are also other situations from which *`exam:anElderIs`* can be inferred.
 
+The plus sign (`+`) postfixed to *`exam:anElderIs`* matches one or more *`exam:anElderIs`*, which means there is a directed path between the two linked nodes along one or more *`exam:anElderIs`*.
+
+##### Example 4
+
+    prefix exam: <http://www.spart.group/exam#>
+    
+    insert {
+        ?x exam:anElderIs ?y
+    } 
+    where {
+        ?x exam:anElderIs+ ?y
+    }
+    
+This update represents the inference of the transitive property *`exam:anElderIs`*. 
+
 Fact Extraction
 ----------
 
