@@ -182,10 +182,18 @@ This update represents the inference of the transitive property *`exam:anElderIs
 Fact Extraction
 ----------
 
-### The Visitor Design Pattern
+### Visitors
+[CodeFactExtractor](https://github.com/Megre/CodeFactExtractor) is based on the Visitor design pattern. The framework traverses the AST (Abstract Syntax Tree), during which each AST node accepts registered visitors and as a result the visitor method of each visitor is invoked. 
 
+Individuals are generated during the invocation of visitor methods. Each visitor method corresponds to one type of AST node which is used to generate corresponding individual.
+
+### Property Handlers
 
 ### Visitor Layout Configuration
+
+### Extend CodeFactExtractor
+
+
 (to be continued)
 
 ----------
