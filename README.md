@@ -1,5 +1,18 @@
 [（中文说明）](#CodeFactExtractor是什么)
 
+### Content
+- [What's CodeFactExtractor](#whats-codefactextractor)
+- [Basics](#basics)
+    - [OWL](#owl)
+    - [Facts](#facts)
+    - [Inference](#inference)
+    - [SPARQL Query/Update Language](#sparql-query/update-language)
+- [Fact Extraction](#fact-extraction)
+    - [Visitors](#visitors)
+    - [Property Handlers](#property-handlers)
+    - [Visitor Layout Configuration](#visitor-layout-configuration)
+    - [To Extend CodeFactExtractor](#to-extend-codefactextractor)
+
 What's CodeFactExtractor
 ----------
 [CodeFactExtractor](https://github.com/Megre/CodeFactExtractor) is a lightweight framework to extract facts from source code for code search and inference. [CodeFactExtractor](https://github.com/Megre/CodeFactExtractor) assists both static and dynamic analysis in several ways:
@@ -183,15 +196,16 @@ Fact Extraction
 ----------
 
 ### Visitors
-[CodeFactExtractor](https://github.com/Megre/CodeFactExtractor) is based on the Visitor design pattern. The framework traverses the AST (Abstract Syntax Tree), during which each AST node accepts registered visitors and as a result the visitor method of each visitor is invoked. 
+[CodeFactExtractor](https://github.com/Megre/CodeFactExtractor) is based on the Visitor design pattern. The framework traverses the AST (Abstract Syntax Tree), during which each AST node accepts registered visitors and as a result the visit method of each visitor is invoked. 
 
-Individuals are generated during the invocation of visitor methods. Each visitor method corresponds to one type of AST node which is used to generate corresponding individual.
+Individuals are generated during the invocation of visit methods. Each visit method corresponds to one type of AST node which is used to generate individuals of an ontology class.
 
 ### Property Handlers
+Each property handler processes one property which links an individual to another. A property handler is initialized by a visitor's visit method with the instances of the visitor and current AST node. Then the handle method of the handler is invoked to generate facts using the property. 
 
 ### Visitor Layout Configuration
 
-### Extend CodeFactExtractor
+### To Extend CodeFactExtractor
 
 
 (to be continued)
