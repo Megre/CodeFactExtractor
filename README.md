@@ -6,12 +6,13 @@
     - [OWL](#owl)
     - [Facts](#facts)
     - [Inference](#inference)
-    - [SPARQL Query/Update Language](#sparql-query/update-language)
+    - [SPARQL Query/Update Language](#sparql-queryupdate-language)
 - [Fact Extraction](#fact-extraction)
     - [Visitors](#visitors)
     - [Property Handlers](#property-handlers)
-    - [Visitor Layout Configuration](#visitor-layout-configuration)
-    - [To Extend CodeFactExtractor](#to-extend-codefactextractor)
+    - [Naming Individuals](#naming-individuals)
+    - [Visitor Layout](#visitor-layout[p)
+    - [Extending CodeFactExtractor](#to-extend-codefactextractor)
 
 What's CodeFactExtractor
 ----------
@@ -203,9 +204,12 @@ Individuals are generated during the invocation of visit methods. Each visit met
 ### Property Handlers
 Each property handler processes one property which links an individual to another. A property handler is initialized by a visitor's visit method with the instances of the visitor and current AST node. Then the handle method of the handler is invoked to generate facts using the property. 
 
-### Visitor Layout Configuration
+### Naming Individuals
+Visitors and property handlers need a unique name to create or retrieve an individual. An individual corresponding to an AST node should have a unique name, because the individual may be created in different visitors or property handlers. Creating an individual with the same name of an existing individual will reuse the existing individual. Thus, a visitor or property handler doesn't need to check whether an individual already exists. 
 
-### To Extend CodeFactExtractor
+### Visitor Layout
+
+### Extending CodeFactExtractor
 
 
 (to be continued)
