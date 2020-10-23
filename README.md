@@ -11,7 +11,7 @@
     - [Visitors](#visitors)
     - [Property Handlers](#property-handlers)
     - [Naming Individuals](#naming-individuals)
-    - [Visitor Layout](#visitor-layout[p)
+    - [Visitor Layouts](#visitor-layouts)
     - [Extending CodeFactExtractor](#to-extend-codefactextractor)
 
 What's CodeFactExtractor
@@ -207,7 +207,45 @@ Each property handler processes one property which links an individual to anothe
 ### Naming Individuals
 Visitors and property handlers need a unique name to create or retrieve an individual. An individual corresponding to an AST node should have a unique name, because the individual may be created in different visitors or property handlers. Creating an individual with the same name of an existing individual will reuse the existing individual. Thus, a visitor or property handler doesn't need to check whether an individual already exists. 
 
-### Visitor Layout
+### Visitor Layouts
+Visitor layouts specify the visitors and property handlers that are invoked by the framework. Visitor layouts are specified in a configuration file, e.g. [visitor_layout.cfg](https://github.com/Megre/CodeFactExtractor/blob/master/data/visitor_layout.cfg):
+
+    [package]
+    visitor = group.spart.kg.java.visitor 
+        # the package name of java visitors
+    handler = group.spart.kg.java.prop 
+        # the package name of java property handlers
+    
+    [visitor]
+    name = EntryVisitor 
+        # the first visitor of the configuration file is the entry visitor, i.e. group.spart.kg.java.visitor.EntryVisitor
+    namespace = java 
+        # the default prefix used to create individuals
+    context = TypeDeclaration 
+        # type of visited AST node, i.e. org.eclipse.jdt.core.dom.TypeDeclaration
+    child = MethodDeclarationVisitor, AnonymousClassDeclarationVisitor, ArrayTypeVisitor
+    child = FieldDeclarationVisitor
+        # currently visited AST node will accept the child visitors. 
+        # These visitors also needs to be specfied in the configuration file.
+    
+    # ...
+    
+    [property]
+    name = hasMethod
+        # name of the property
+    namespace = java
+        # the default prefix used to create individuals or retrieve propertyies. e.g. java:hasMethod
+    handler = HasMethodHandler
+        # the property handler that process the property java:hasMethod, i.e. group.spart.kg.java.prop.HasMethodHandler
+    context = MethodDeclaration
+        # type of AST node. The framework invokes property handlers in the visit method of visitors. 
+        # If the type of visited AST node matches the context of a property handler, 
+        # the property handler will be initialized by the AST node visited, after which 
+        # its handle method will be invoked.
+    
+    # ...
+
+The configuration uses a # to start a comment (inline comments are supported). 
 
 ### Extending CodeFactExtractor
 
