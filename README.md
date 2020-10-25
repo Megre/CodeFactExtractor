@@ -12,7 +12,7 @@
     - [Property Handlers](#property-handlers)
     - [Naming Individuals](#naming-individuals)
     - [Visitor Layouts](#visitor-layouts)
-    - [Extending CodeFactExtractor](#to-extend-codefactextractor)
+    - [Extending CodeFactExtractor](#extending-codefactextractor)
 
 What's CodeFactExtractor
 ----------
@@ -245,7 +245,7 @@ Visitor layouts specify the visitors and property handlers that are invoked by t
     
     # ...
 
-The configuration uses a # to start a comment。 Inline comments are supported. 
+The configuration uses a # to start a comment. Inline comments are supported. 
 
 There are three types of configuration item: [package], [visitor], and [property] (see  [group.spart.kg.layout.ConfigItem](https://github.com/Megre/CodeFactExtractor/blob/master/src/group/spart/kg/layout/ConfigItem.java)).  A configuration item is composed of several lines, each of which is a key-value pair separated by "=". A key is a plain text; a value may be a single plain string, a list (e.g. "value1, value2, value3"), or a multiple-list (e.g. "value1; value2, value3, value4; value5, value6"), (see [group.spart.kg.layout.ConfigItemValue](https://github.com/Megre/CodeFactExtractor/blob/master/src/group/spart/kg/layout/ConfigItemValue.java)). Some keys (e.g. "child") may occur more than once within a configuration item. Such keys are equal to a multiple-list in case that the key-value line is too long.
 
