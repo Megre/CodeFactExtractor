@@ -1,4 +1,4 @@
-[（中文说明）](#CodeFactExtractor是什么)
+[（中文说明）](https://github.com/Megre/CodeFactExtractor/blob/master/readme/说明.md)
 
 ### Content
 - [What's CodeFactExtractor](#whats-codefactextractor)
@@ -253,15 +253,9 @@ There are three types of configuration item: [package], [visitor], and [property
 
 ### Extending CodeFactExtractor
 
-To extend the framework, you need to add a visitor or property handler, then configure it in the visitor layout. For Java, a visitor must extend [group.spart.kg.java.visitor.AbstractASTNodeVisitor](https://github.com/Megre/CodeFactExtractor/blob/master/java/group/spart/kg/java/visitor/AbstractASTNodeVisitor.java); a property handler must extend [group.spart.kg.java.prop.AbstractPropertyHandler](group.spart.kg.java.prop.AbstractPropertyHandler).
+To extend the framework, you need to add a visitor or property handler, then configure it in the visitor layout. For Java, a visitor must extend [group.spart.kg.java.visitor.AbstractASTNodeVisitor](https://github.com/Megre/CodeFactExtractor/blob/master/java/group/spart/kg/java/visitor/AbstractASTNodeVisitor.java); a property handler must extend [group.spart.kg.java.prop.AbstractPropertyHandler](https://github.com/Megre/CodeFactExtractor/blob/master/java/group/spart/kg/java/prop/AbstractPropertyHandler.java).
 
 A visitor item or property item should be added to the visitor layout to configure a visitor or property handler. The extraction starts from the first visitor of the visitor layout (i.e., the entry visitor), which recursively links to all other visitors by specifying the "child" key.
 
-Further, if the configured child visitors are expected to be processed, the processChildVisitors method of [AbstractASTNodeVisitor](https://github.com/Megre/CodeFactExtractor/blob/master/java/group/spart/kg/java/visitor/AbstractASTNodeVisitor.java) should be called within the visitor's visit method. Similarly, if the properties, whose context matches the currently visited node, are expected to be handled, the handleProperties method of [AbstractASTNodeVisitor](https://github.com/Megre/CodeFactExtractor/blob/master/java/group/spart/kg/java/visitor/AbstractASTNodeVisitor.java) should also be called within the visitor's visit method.
+Further, if the configured child visitors are expected to be processed, the processChildVisitors method of [AbstractASTNodeVisitor](https://github.com/Megre/CodeFactExtractor/blob/master/java/group/spart/kg/java/visitor/AbstractASTNodeVisitor.java) should be called within the visitor's visit method. Similarly, if the properties, whose context matches the currently visited node, are expected to be handled, the handleProperties method of [AbstractASTNodeVisitor](https://github.com/Megre/CodeFactExtractor/blob/master/java/group/spart/kg/java/visitor/AbstractASTNodeVisitor.java) should also be called within the visitor's visit method. The framework will load the visitor layout and invoke all visitors and handlers as specified.
 		
-
-----------
-
-CodeFactExtractor是什么
-----------
-未完待续...
