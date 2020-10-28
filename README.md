@@ -47,11 +47,11 @@ Facts represent knowledge in form of `triples`. A triple is in form of:
     (exam:Lily exam:ageIs 10)
     (exam:Lily exam:hasBrother exam:Tom)
 
-Lily, Johnson, and Tom are all individuals whose type (*rdf:type*) is Person. 
+Lily, Johnson, and Tom are all individuals whose type (*`rdf:type`*) is Person. 
 
 The properties *`exam:fatherIs`*, *`rdf:type`*, *`exam:ageIs`*, and *`exam:hasBrother`* links individuals to other individuals or literal. While *`exam:fatherIs`*, *`exam:hasBrother`*, and *`rdf:type`* are all object properties, *`exam:ageIs`* is a data  type property.
 
-The prefix "rdf" is a XML namespace defined as "<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>", where the property *`rdf:type`* is defined.
+The prefix "rdf" is a XML namespace defined as "<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#" target="_blank">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>", where the property *`rdf:type`* is defined.
 
 Another user-defined namespace "exam" is defined as "[http://www.spart.group/exam#](https://github.com/Megre/CodeFactExtractor/blob/master/readme/exam.owl)", where the ontology class *`exam:PersonIs`*, and the properties *`exam:fatherIs`*, *`exam:ageIs`*, and *`exam:hasBrother`* are defined.
 
@@ -93,7 +93,7 @@ The facts in [Example 1](#example-1) can be saved in RDF/XML format in the follo
         
     </rdf:RDF>
 
-To model the the concepts (e.g. ontology classes) and relations (e.g. properties) as shown in "exam.owl", the [Protege](https://protege.stanford.edu) tool is recommended instead of creating "exam.owl" by editing the text. Based on the OWL model, [CodeFactExtractor](https://github.com/Megre/CodeFactExtractor) assists the extraction of facts from source code. 
+To model the the concepts (e.g. ontology classes) and relations (e.g. properties) as shown in [exam.owl](https://github.com/Megre/CodeFactExtractor/blob/master/readme/exam.owl), the [Protege](https://protege.stanford.edu) tool is recommended instead of creating "exam.owl" by editing the text. Based on the OWL model, [CodeFactExtractor](https://github.com/Megre/CodeFactExtractor) assists the extraction of facts from source code. 
 
 ### Inference
 
