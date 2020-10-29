@@ -116,9 +116,9 @@ But the strategy of [CodeFactExtractor](https://github.com/Megre/CodeFactExtract
 
     (any-public-method exam:hasModifier "public")
 
-is asserted for each public method of each class/method during the extraction, it can be safely asserted that the methods that are not linked to "public" by *`exam:hasModifier`* are non-public methods. (In Java, the access permission of every method of an interface is public even if the methods are not declared as public. Such methods are also considered as non-public methods since *`exam:hasModifier`* indicates the modifier declared in the source code.)
+is asserted for each public method of each class/interface during the extraction, it can be safely asserted that the methods that are not linked to "public" by *`exam:hasModifier`* are non-public methods. (In Java, the access permission of every method of an interface is public even if the methods are not declared as public. Such methods are also considered as non-public methods since *`exam:hasModifier`* indicates the modifier declared in the source code.)
 
-Based on the facts in [Example 1](#example-1), other facts also can be inferred such as "Johnson has two children at least", "Johnson has a sun Tom", and "Tom is younger than Johnson", etc. These facts are inferred according to the common sense. In [CodeFactExtractor](https://github.com/Megre/CodeFactExtractor), the inference is usually according to the programming mechanisms of a programming language. For example, if two methods of a class has the same name but different signatures, a overload relation of the two methods can be inferred. A property (e.g. *`exam:overloads`*) can be created to represent the relation.
+Based on the facts in [Example 1](#example-1), other facts also can be inferred such as "Johnson has two children at least", "Johnson has a son Tom", and "Tom is younger than Johnson", etc. These facts are inferred according to the common sense. In [CodeFactExtractor](https://github.com/Megre/CodeFactExtractor), the inference is usually according to the programming mechanisms of a programming language. For example, if two methods of a class has the same name but different signatures, a overload relation of the two methods can be inferred. A property (e.g. *`exam:overloads`*) can be created to represent the relation.
 
 An important inference strategy is reusing exiting relations to build more abstract relations. Given the following facts in addition to [Example 1](#example-1):
 
@@ -138,7 +138,7 @@ The property *`exam:anElderIs`* is more general than the properties *`exam:fathe
     
 which means *`exam:anElderIs`* is a transitive property.
 
-Such inference strategy is called `generalization` which raises the abstraction level by imposing restrictions to existing properties. What to infer depends on your needs based on the clear definition of the meaning of each property.
+Such inference strategy is called `generalization` which raises the abstraction level by composing existing properties or imposing restrictions to existing properties. What and How to infer depends on your needs based on the clear definition of the meaning of each property.
 
 ### SPARQL Query/Update Language
 
