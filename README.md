@@ -157,7 +157,7 @@ This linking structure forms a directed, labeled graph, where the edges represen
         ?x exam:fatherIs exam:Johnson
     }
 
-This query retrieves the children whose father is Johnson. The query results are bound the variable `x` prefixed with a question mark(`?`).
+This query retrieves the children whose father is Johnson. The query results are bound to the variable `x` prefixed with a question mark(`?`).
 
 ##### Example 3
 
