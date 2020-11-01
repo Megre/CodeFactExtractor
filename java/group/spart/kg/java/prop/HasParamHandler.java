@@ -7,7 +7,7 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 
-import group.spart.kg.NameFactory;
+import group.spart.kg.java.NameFactory;
 
 /** 
 * @author megre

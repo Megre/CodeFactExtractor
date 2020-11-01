@@ -7,7 +7,7 @@ import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 
-import group.spart.kg.NameFactory;
+import group.spart.kg.java.NameFactory;
 
 /** 
 * @author megre

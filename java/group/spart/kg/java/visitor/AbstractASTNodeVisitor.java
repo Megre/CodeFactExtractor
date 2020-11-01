@@ -8,7 +8,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 
-import group.spart.kg.NameFactory;
+import group.spart.kg.java.NameFactory;
 import group.spart.kg.java.layout.JavaVisitorLayout;
 import group.spart.kg.java.prop.AbstractPropertyHandler;
 import group.spart.kg.uri.StandardXmlNamespace;

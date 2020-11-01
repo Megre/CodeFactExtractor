@@ -34,7 +34,7 @@ public class Main {
 		extractor.registerVisitor(visitorLayout.entryVisitorClass());
 		extractor.extract();
 		
-		ModelUtil.save(extractor.getModel(), savePath);
+		ModelUtil.save(extractor.infer(ontNet.getAllAttachedRuleFiles()), savePath);
 	}
 
 }

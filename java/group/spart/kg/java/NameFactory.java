@@ -1,4 +1,4 @@
-package group.spart.kg;
+package group.spart.kg.java;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.AbstractTypeDeclaration;

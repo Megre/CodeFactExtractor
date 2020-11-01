@@ -1,9 +1,24 @@
 package group.spart.kg.java;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.List;
+
+import org.apache.jena.ontology.OntModelSpec;
+import org.apache.jena.query.Dataset;
+import org.apache.jena.query.DatasetFactory;
+import org.apache.jena.query.ReadWrite;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.update.UpdateExecutionFactory;
+import org.apache.jena.update.UpdateFactory;
+import org.apache.jena.update.UpdateProcessor;
+import org.apache.jena.update.UpdateRequest;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
 
+import group.spart.error.Assert;
 import group.spart.kg.java.layout.JavaVisitorLayout;
 import group.spart.kg.java.visitor.AbstractASTNodeVisitor;
 import group.spart.kg.layout.InstancePool;
@@ -45,6 +60,28 @@ public class FactExtractor {
 		parser.setBindingsRecovery(true);
 		parser.setStatementsRecovery(true);
 		parser.createASTs(fProject.listSourceFiles(), null, new String[] {}, fRequestor, null);
+	}
+	
+	public Model infer(List<File> qrules) {
+		Dataset ds = DatasetFactory.create() ;
+		ds.setDefaultModel(fModel);
+		ds.supportsTransactionAbort();
+		ds.begin(ReadWrite.WRITE);
+		try {
+			for(File qfile: qrules) {
+				Assert.info("Inferring: " + qfile.getName());
+				UpdateRequest ur = UpdateFactory.read(new FileInputStream(qfile));
+				UpdateProcessor proc = UpdateExecutionFactory.create(ur, ds);
+			    proc.execute();
+			}
+		} 
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		Model resultModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, ds.getDefaultModel());
+		ds.abort();
+	    ds.close(); 
+	    return resultModel;
 	}
 	
 	public Model getModel() {
