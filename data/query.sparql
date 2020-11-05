@@ -1,0 +1,8 @@
+
+prefix java: <http://www.spart.group/megre/ontologies/2017/6/Java#>
+
+select distinct ?r
+where {
+  ?r a java:Interface
+}
+limit 10;
