@@ -28,7 +28,9 @@ public class HasModifierHandler extends AbstractPropertyHandler {
 			modifiers = ((TypeDeclaration) fNode).modifiers();
 		}
 		
-		addModifiers(modifiers);
+		if(modifiers != null) {
+			addModifiers(modifiers);
+		}
 	}
 
 	private void addModifiers(List<?> modifiers) {

@@ -1,8 +1,18 @@
 
+prefix ptn: <http://www.spart.group/megre/ontologies/2017/10/Pattern#>
+prefix sbh: <http://www.spart.group/megre/ontologies/2018/4/StaticBehavior#>
 prefix java: <http://www.spart.group/megre/ontologies/2017/6/Java#>
+prefix jsbh: <http://www.spart.group/megre/ontologies/2018/4/Java.StaticBehavior#>
+prefix jd: <http://www.spart.group/megre/ontologies/2017/11/Java.DesignPattern#>
 
-select distinct ?r
+
+# Singleton
+# key roles: Singleton (?s)
+# required operations: Instance (?ins)
+select ?s ?ins 
 where {
-  ?r a java:Interface
-}
-limit 10;
+  ?s a java:Class; java:hasField ?fld.
+  ?fld java:fieldTypeIs ?s; java:hasModifier "static".
+  ?s java:hasMethod ?ins.
+  ?ins java:returnTypeIs ?s; java:hasModifier "static"
+};

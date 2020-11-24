@@ -35,6 +35,7 @@ import group.spart.kg.util.ModelUtil;
 */
 public class Main {
 	public static final String BASE_DIR = new File("").getAbsolutePath() + "\\data";
+	public static final char NEW_LINE = '\n';
 	
 	public static void main(String[] args) throws IOException {
 		final String baseDir = BASE_DIR;
@@ -81,24 +82,34 @@ public class Main {
 		
 		List<String> sparqls = new ArrayList<String>();
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(file))))) {
-			String line = null;
+			String line = null, trimedLine;
+			boolean selectStarted = false;
 			while((line = br.readLine()) != null) {
-				if(trimComment(line).trim().toLowerCase().startsWith("select")) break;
-				
-				prefixes.append(line).append("\n");
-			}
-			
-			while(line != null) {
-				if(trimComment(line).contains(";")) {
-					queryBody.append(line);
-					queryBody.delete(queryBody.indexOf(";"), queryBody.length());
-					sparqls.add(prefixes.toString() + queryBody.toString());
-					queryBody.delete(0, queryBody.length()-1);
+				trimedLine = trimComment(line).toLowerCase();
+				if(trimedLine.startsWith("prefix")){
+					prefixes.append(line).append(NEW_LINE);
+					continue;
 				}
 				
-				queryBody.append(line).append("\n");
-				line = br.readLine();
+				if(trimedLine.startsWith("select")) { // comes to the begin of a select query
+					if(selectStarted) {
+						sparqls.add(prefixes.toString() + trimSemicolon(queryBody));
+						queryBody.delete(0, queryBody.length());
+					}
+					else {
+						selectStarted = true;
+					}
+					queryBody.append(line).append(NEW_LINE); 
+				}
+				else if(selectStarted) {
+					queryBody.append(line).append(NEW_LINE);
+				}
 			}
+			
+			if(queryBody.length() > 0) {
+				sparqls.add(prefixes.toString() + trimSemicolon(queryBody));
+			}
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -108,12 +119,26 @@ public class Main {
 		return sparqls;
 	}
 	
+	private static String trimSemicolon(StringBuffer sparql) {
+		char c;
+		for(int i=sparql.length()-1; i>=0; --i) {
+			c = sparql.charAt(i);
+			if(c == ' ' || c == NEW_LINE) {
+				continue;
+			}
+			
+			if(c == ';') {
+				sparql.deleteCharAt(i);
+			}
+			
+			break;
+		}
+		return sparql.toString();
+	}
+	
 	private static String trimComment(String line) {
 		int index = line.indexOf('#');
-		if(index != -1) {
-			return line.substring(0, index);
-		}
-		return line;
+		return (index!=-1?line.substring(0, index):line).trim();
 	}
 
 }
